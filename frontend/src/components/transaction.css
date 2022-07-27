@@ -1,0 +1,60 @@
+.transaction {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 2px -2px gray;
+}
+
+.transaction__status__red:empty {
+  background-color: #d26060;
+}
+
+.transaction__status__green:empty {
+  background-color: #65c15c;
+}
+
+.transaction__status__green:empty,
+.transaction__status__red:empty {
+  width: 6px;
+  height: 70px;
+  margin-right: 10px;
+  overflow-y: hidden;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.transaction__details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+}
+
+h3 {
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.transaction__details__info > p {
+  font-size: small;
+  font-weight: lighter;
+  cursor: pointer;
+}
+
+.transaction__details__amount {
+  display: flex;
+  align-items: center;
+}
+
+.transaction__details__amount > img {
+  width: 25px;
+  cursor: pointer;
+  height: 25px;
+  margin-right: 20px;
+}
+
+.transaction__details__amount > h3 {
+  font-size: medium;
+  cursor: pointer;
+}

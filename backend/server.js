@@ -14,10 +14,6 @@ const PORT = process.env.PORT;
 const MONGODB_URI = process.env.MONGO_URI;
 
 // Middleware
-app.use((req, res, next) => {
-  console.log(req.path, req.method);
-  next();
-});
 app.use(express.json());
 
 // Transaction Routes Middleware

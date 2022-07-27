@@ -1,0 +1,13 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  background-color: #69b964;
+  padding: 0 30px;
+  box-shadow: 0 4px 2px -2px gray;
+}
+
+.navbar img {
+  height: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}

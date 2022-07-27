@@ -37,6 +37,19 @@ const getTransaction = async (req, res) => {
 const createTransaction = async (req, res) => {
   const { title, method, amount } = req.body;
 
+  let emptyFields = [];
+
+  if (!title) {
+    emptyFields.push('title');
+  }
+  if (!amount) {
+    emptyFields.push('amount');
+  }
+
+  if (emptyFields.length > 0) {
+    res.status(400).json({ error: 'Please Fill in all Fields', emptyFields });
+  }
+
   // Add doc to db
   try {
     const transaction = await Transaction.create({ title, method, amount });
