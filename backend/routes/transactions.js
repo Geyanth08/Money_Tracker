@@ -7,9 +7,13 @@ const {
   deleteTransaction,
   updateTransaction,
 } = require('../controllers/transactionController');
+const requireAuth = require('../middleware/requireAuth');
 
 // Instance of Router
 const router = express.Router();
+
+// protecting routes
+router.use(requireAuth);
 
 // GET all transactions
 router.get('/', getTransactions);

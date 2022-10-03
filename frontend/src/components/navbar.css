@@ -4,10 +4,34 @@
   background-color: #69b964;
   padding: 0 30px;
   box-shadow: 0 4px 2px -2px gray;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navbar img {
   height: 50px;
   padding-top: 5px;
   padding-bottom: 5px;
+}
+
+.navbar__links {
+  display: flex;
+}
+
+.navbar__links h4 {
+  color: #202126;
+  margin-left: 40px;
+}
+
+.navbar__links h4:hover {
+  text-decoration: underline;
+}
+
+.navbar__links a {
+  text-decoration: none;
+}
+
+.logout {
+  background-color: transparent;
+  padding: 0;
 }

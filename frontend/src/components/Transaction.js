@@ -3,13 +3,22 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
 import { useTransactionsContext } from '../hooks/useTransactionsContext';
 import './transaction.css';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 function Transaction({ details }) {
   const { dispatch } = useTransactionsContext();
+  const { user } = useAuthContext();
 
   const handleClick = async () => {
+    if (!user) {
+      return;
+    }
+
     const response = await fetch('/api/transactions/' + details._id, {
       method: 'DELETE',
+      headers: {
+        "Authorization": `Bearer ${user.token}`,
+      },
     });
 
     const json = await response.json();

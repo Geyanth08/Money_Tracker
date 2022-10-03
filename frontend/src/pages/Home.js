@@ -4,13 +4,19 @@ import AddTransaction from '../components/AddTransaction';
 import { useTransactionsContext } from '../hooks/useTransactionsContext';
 import Transaction from '../components/Transaction';
 import './home.css';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 function Home() {
   const { transactions, dispatch } = useTransactionsContext();
-
+  const { user } = useAuthContext();
+  // console.log(user.token);
   useEffect(() => {
     const fetchTransactions = async () => {
-      const response = await fetch('/api/transactions');
+      const response = await fetch('/api/transactions', {
+        headers: {
+          "Authorization": `Bearer ${user.token}`,
+        },
+      });
       const json = await response.json();
 
       if (response.ok) {
@@ -18,8 +24,10 @@ function Home() {
       }
     };
 
-    fetchTransactions();
-  }, [dispatch]);
+    if (user) {
+      fetchTransactions();
+    }
+  }, [dispatch, user]);
 
   return (
     <div className="home">

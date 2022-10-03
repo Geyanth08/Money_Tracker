@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 
 import { useTransactionsContext } from '../hooks/useTransactionsContext';
 import './addTransaction.css';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 function AddTransaction() {
   const { dispatch } = useTransactionsContext();
+  const { user } = useAuthContext();
+
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
   const [method, setMethod] = useState(null);
@@ -13,6 +16,11 @@ function AddTransaction() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!user) {
+      setError('You must be logged in');
+      return;
+    }
+
     const transaction = { title, amount, method };
 
     const response = await fetch('/api/transactions', {
@@ -20,6 +28,7 @@ function AddTransaction() {
       body: JSON.stringify(transaction),
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`,
       },
     });
 

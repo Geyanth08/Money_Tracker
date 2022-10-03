@@ -6,6 +6,7 @@ const path = require('path');
 
 // Instances from other files
 const transactionRoutes = require('./routes/transactions');
+const userRoutes = require('./routes/user');
 
 // Create a Instance of express
 const app = express();
@@ -20,6 +21,7 @@ app.use(express.static(path.join(__dirname, './frontend', './build')));
 
 // Transaction Routes Middleware
 app.use('/api/transactions', transactionRoutes);
+app.use('/api/users', userRoutes);
 
 // Connecting to MONGODB
 mongoose

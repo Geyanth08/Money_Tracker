@@ -4,9 +4,13 @@ const Transaction = require('../models/transactionModel');
 
 // Get all transaction
 const getTransactions = async (req, res) => {
+  const user_id = req.user._id;
+
   // get docs from db
   try {
-    const transactions = await Transaction.find({}).sort({ createdAt: -1 });
+    const transactions = await Transaction.find({ user_id }).sort({
+      createdAt: -1,
+    });
     res.status(200).json(transactions);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -52,7 +56,13 @@ const createTransaction = async (req, res) => {
 
   // Add doc to db
   try {
-    const transaction = await Transaction.create({ title, method, amount });
+    const user_id = req.user._id;
+    const transaction = await Transaction.create({
+      title,
+      method,
+      amount,
+      user_id,
+    });
     res.status(200).json(transaction);
   } catch (error) {
     res.status(400).json({ error: error.message });

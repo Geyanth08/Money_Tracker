@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;
+}
+
+.signUp {
+  background-color: #69b964;
+  width: 400px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.signUp__input {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0px;
+}
+
+.signUp__input label {
+  margin-bottom: 5px;
+  font-style: italic;
+}
+
+.signUp__input input {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+}
+
+form button {
+  background-color: #93cc8e;
+  color: #000000;
+}
